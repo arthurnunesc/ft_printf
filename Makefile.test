@@ -6,13 +6,14 @@
 #    By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 23:26:37 by anunes-c          #+#    #+#              #
-#    Updated: 2023/05/30 16:05:09 by anunes-c         ###   ########.fr        #
+#    Updated: 2023/05/30 19:06:20 by anunes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.out
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
+# -Wall -Wextra -Werror
 AR = ar rc
 SRCS = $(wildcard *.c libft/*.c)
 OBJS = $(SRCS:.c=.o)
