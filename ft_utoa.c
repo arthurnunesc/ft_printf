@@ -6,11 +6,11 @@
 /*   By: anunes-c <anunesc-@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:41:32 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/05/30 19:18:24 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:26:05 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 
 static char	*ft_createandfillstr(unsigned int n, unsigned int size)

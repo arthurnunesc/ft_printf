@@ -6,7 +6,7 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:31:44 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/05/30 19:12:11 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 00:09:32 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
@@ -62,9 +62,23 @@ int	ft_printf(const char *format, ...)
 				free(s);
 			}
 			else if (format[i + 1] == 'x')
-				;
+			{
+				s = ft_btoa(va_arg(args, int), "0123456789abcdef");
+				if (s == NULL)
+					return (-1);
+				ft_putstr_fd(s, 1);
+				n_printed_chars += ft_strlen(s);
+				free(s);
+			}
 			else if (format[i + 1] == 'X')
-				;
+			{
+				s = ft_btoa(va_arg(args, int), "0123456789ABCDEF");
+				if (s == NULL)
+					return (-1);
+				ft_putstr_fd(s, 1);
+				n_printed_chars += ft_strlen(s);
+				free(s);
+			}
 			else if (format[i + 1] == '%')
 			{
 				ft_putchar_fd('%', 1);
@@ -88,7 +102,7 @@ int	main(void)
 	char			c;
 	char			*str;
 	unsigned int	uint;
-	// int				*int_ptr;
+	int				*int_ptr;
 	int				og_out;
 	int				ft_out;
 
@@ -99,9 +113,26 @@ int	main(void)
 	ft_out = ft_printf("ft_printf input string: %s\n", str);
 	printf("og_printf return value when printing \"%s\": %i\n", str, og_out);
 	ft_printf("ft_printf return value when printing \"%s\": %i\n", str, ft_out);
-	printf("og_printf input unsigned int: %u\n", uint);
-	ft_printf("ft_printf input unsigned int: %u\n", uint);
-	printf("%%\n");
-	ft_printf("%%\n");
-	return (0);
+	printf("og_printf printing unsigned int: %u\n", uint);
+	ft_printf("ft_printf printing unsigned int: %u\n", uint);
+	printf("og_printf printing percentage sign: %%\n");
+	ft_printf("ft_printf printing percentage sign: %%\n");
+	printf("POSITIVE HEX NUMBERS:\n");
+	printf("og_printf printing hex: %x\n", 0x1AB);
+	ft_printf("ft_printf printing hex: %x\n", 0x1AB);
+	printf("og_printf printing hex: %X\n", 0x1AB);
+	ft_printf("ft_printf printing hex: %X\n", 0x1AB);
+	printf("og_printf printing hex: %x\n", 0x100);
+	ft_printf("ft_printf printing hex: %x\n", 0x100);
+	printf("og_printf printing hex: %X\n", 0x100);
+	ft_printf("ft_printf printing hex: %X\n", 0x100);
+	printf("NEGATIVE HEX NUMBERS:\n");
+	printf("og_printf printing hex: %x\n", -0x2);
+	ft_printf("ft_printf printing hex: %x\n", -0x2);
+	printf("og_printf printing hex: %X\n", -0x2);
+	ft_printf("ft_printf printing hex: %X\n", -0x2);
+	printf("og_printf printing hex: %x\n", -0x2AB);
+	ft_printf("ft_printf printing hex: %x\n", -0x2AB);
+	printf("og_printf printing hex: %X\n", -0x2AB);
+	ft_printf("ft_printf printing hex: %X\n", -0x2AB);
 }
