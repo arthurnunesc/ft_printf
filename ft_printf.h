@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:55:01 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/05/30 18:40:19 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:27:10 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stddef.h>
 
 int		ft_isalpha(int c);
@@ -67,5 +67,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int		ft_putnbr_base_fd(int n, int b);
 char	*ft_utoa(unsigned int n);
+int		ft_printf(const char *format, ...);
 
 #endif
