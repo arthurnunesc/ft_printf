@@ -6,17 +6,19 @@
 #    By: anunes-c <anunes-c@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 13:09:12 by anunes-c          #+#    #+#              #
-#    Updated: 2023/05/29 19:50:57 by anunes-c         ###   ########.fr        #
+#    Updated: 2023/06/01 17:31:03 by anunes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+NAME_H = libft.h
+DOT_BONUS = .bonus
 
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror
 
-AR = ar rc
+AR = ar
+ARFLAGS = rc
 
 RM = rm -f
 
@@ -39,20 +41,23 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(DOT_BONUS) 
 
-bonus: $(BONUS_OBJS) $(NAME)
-	@$(AR) $(NAME) $(BONUS_OBJS)
+$(DOT_BONUS): $(BONUS_OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(BONUS_OBJS)
+	touch $(DOT_BONUS)
+
+%.o: %.c $(NAME_H)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(DOT_BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
