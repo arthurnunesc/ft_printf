@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_hex.c                                      :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:13:44 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:42:20 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:42:38 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_allocandretstr_base(int n, int n_len, char *base)
+static char	*ft_allocandretstr_base(unsigned int n, int n_len, char *base)
 {
 	char	*ret_val;
 	size_t	base_size;
@@ -29,21 +29,19 @@ static char	*ft_allocandretstr_base(int n, int n_len, char *base)
 	return (ret_val);
 }
 
-char	*ft_itoa_hex(int n, int format)
+char	*ft_utoa_base(unsigned int n, char *base)
 {
-	int		n_len;
-	int		n_len_aux;
-	char	*base;
+	int				n_len;
+	unsigned int	n_len_aux;
+	size_t			base_size;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	if (format == 'X')
-		base = "0123456789ABCDEF";
-	else
-		base = "0123456789abcdef";
 	n_len = 0;
 	n_len_aux = n;
-	while (++n_len && (n_len_aux > 15 || n_len_aux < -15))
-		n_len_aux = n_len_aux / 16 ;
+	base_size = ft_strlen(base);
+	while (++n_len && \
+			(n_len_aux > base_size - 1 || n_len_aux < -(base_size - 1)))
+		n_len_aux = n_len_aux / base_size ;
 	return (ft_allocandretstr_base(n, n_len, base));
 }

@@ -6,9 +6,11 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:08:49 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/06/07 19:10:03 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:16:40 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 int	ft_putchar_ret(int c)
 {
