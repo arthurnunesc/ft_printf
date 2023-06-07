@@ -6,7 +6,7 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 23:55:01 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/05/30 23:25:27 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:03:05 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-char	*ft_utoa(unsigned int n);
-char	*ft_btoa(int n, char *base);
+int		ft_putchar_ret(int c);
+int		ft_putstr_ret(char *s);
+int		ft_validate_base(char *base);
+char	*ft_itoa_base(int n, char *base);
+char	*ft_itoa_hex(int n, int format);
+char	*ft_utoa_base(unsigned int n, char *base);
+char	*ft_lutoa_base(unsigned long n, char *base);
+int		ft_freecharptrandreturnzero(char *s);
 int		ft_printf(const char *format, ...);
 
 #endif
