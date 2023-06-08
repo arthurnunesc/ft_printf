@@ -6,7 +6,7 @@
 #    By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 23:26:37 by anunes-c          #+#    #+#              #
-#    Updated: 2023/06/08 17:13:37 by anunes-c         ###   ########.fr        #
+#    Updated: 2023/06/08 17:21:21 by anunes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = ft_printf.c ft_putchar_ret.c ft_putstr_ret.c ft_itoa_hex.c \
 	   ft_utoa_base.c ft_lutoa_base.c ft_validate_base.c \
 	   ft_freecharptrandreturnzero.c
 OBJS = $(SRCS:.c=.o)
-DEPS = $(SRCS:.c=.d)
+DEPS = $(OBJS:.o=.d)
 
 LIBFT_DIR = libft/
 LIBFT_A = libft/libft.a
@@ -54,6 +54,6 @@ fclean: clean
 re: fclean all
 	$(LIBFT_MAKE) fclean all
 
-include $(DEPS)
+-include $(DEPS)
 
 .PHONY: all clean fclean re
