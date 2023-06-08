@@ -6,7 +6,7 @@
 #    By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 23:26:37 by anunes-c          #+#    #+#              #
-#    Updated: 2023/06/08 00:18:34 by anunes-c         ###   ########.fr        #
+#    Updated: 2023/06/08 17:07:45 by anunes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,9 @@ ARFLAGS = rc
 
 RM = rm -f
 
-# SRCS = ft_printf.c ft_putchar_ret.c ft_putstr_ret.c ft_itoa_hex.c \
-# 	   ft_utoa_base.c ft_lutoa_base.c ft_validate_base.c \
-# 	   ft_freecharptrandreturnzero.c
-SRCS = $(wildcard *.c)
+SRCS = ft_printf.c ft_putchar_ret.c ft_putstr_ret.c ft_itoa_hex.c \
+	   ft_utoa_base.c ft_lutoa_base.c ft_validate_base.c \
+	   ft_freecharptrandreturnzero.c
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 
@@ -53,6 +52,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-	@$(LIBFT_MAKE) fclean all
+	$(LIBFT_MAKE) fclean all
 
 .PHONY: all clean fclean re
