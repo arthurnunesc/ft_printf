@@ -6,7 +6,7 @@
 #    By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 23:26:37 by anunes-c          #+#    #+#              #
-#    Updated: 2023/06/08 17:07:45 by anunes-c         ###   ########.fr        #
+#    Updated: 2023/06/08 17:13:37 by anunes-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,5 +53,7 @@ fclean: clean
 
 re: fclean all
 	$(LIBFT_MAKE) fclean all
+
+include $(DEPS)
 
 .PHONY: all clean fclean re
