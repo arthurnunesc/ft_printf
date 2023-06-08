@@ -6,7 +6,7 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:13:44 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:43:34 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:50:32 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ char	*ft_lutoa_base(unsigned long n, char *base)
 	n_len = 0;
 	n_len_aux = n;
 	base_size = ft_strlen(base);
-	while (++n_len && \
-			(n_len_aux > base_size - 1 || n_len_aux < -(base_size - 1)))
+	while (++n_len && (n_len_aux > base_size - 1))
 		n_len_aux = n_len_aux / base_size ;
 	return (ft_allocandretstr_base(n, n_len, base));
 }

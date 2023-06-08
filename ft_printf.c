@@ -6,7 +6,7 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:16:46 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:34:52 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:00:09 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_allocprintandfreestr(va_list args, int f, int *n_printed_chars, char *s)
 		s = ft_lutoa_base((unsigned long)va_arg(args, void *),
 				"0123456789abcdef");
 		if (!ft_putstr_ret("0x"))
-			return (0);
+			return (ft_freecharptrandreturnzero(s));
 		*n_printed_chars += 2;
 	}
 	else if (f == 'i' || f == 'd')
@@ -50,15 +50,13 @@ int	ft_allocprintandfreestr(va_list args, int f, int *n_printed_chars, char *s)
 		return (0);
 	if (!ft_putstr_ret(s))
 		return (ft_freecharptrandreturnzero(s));
-	n_printed_chars += ft_strlen(s);
+	*n_printed_chars += ft_strlen(s);
 	free(s);
 	return (1);
 }
 
-int	ft_parseargs(va_list args, int format, int *n_printed_chars)
+int	ft_parseargs(va_list args, int format, int *n_printed_chars, char *s)
 {
-	char	*s;
-
 	if (format == 's')
 	{
 		s = va_arg(args, char *);
@@ -66,8 +64,9 @@ int	ft_parseargs(va_list args, int format, int *n_printed_chars)
 			s = "(null)";
 		if (!ft_putstr_ret(s))
 			return (0);
+		*n_printed_chars += ft_strlen(s);
 	}
-	if (format == 'c' || format == '%')
+	else if (format == 'c' || format == '%')
 	{
 		if (!ft_printcharorpercentage(args, format, n_printed_chars))
 			return (0);
@@ -93,8 +92,9 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (!ft_parseargs(args, format[i + 1], &n_printed_chars))
+			if (!ft_parseargs(args, format[i + 1], &n_printed_chars, NULL))
 				return (-1);
+			i++;
 		}
 		else
 		{
@@ -102,6 +102,8 @@ int	ft_printf(const char *format, ...)
 				return (-1);
 			n_printed_chars++;
 		}
+		i++;
 	}
+	va_end(args);
 	return (n_printed_chars);
 }

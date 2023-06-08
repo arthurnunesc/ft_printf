@@ -6,7 +6,7 @@
 /*   By: anunes-c <anunesc-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:13:44 by anunes-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:42:20 by anunes-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:52:04 by anunes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ char	*ft_itoa_hex(int n, int format)
 		base = "0123456789abcdef";
 	n_len = 0;
 	n_len_aux = n;
-	while (++n_len && (n_len_aux > 15 || n_len_aux < -15))
-		n_len_aux = n_len_aux / 16 ;
+	if (n < 0)
+		n_len = 8;
+	else
+	{
+		while (++n_len && (n_len_aux > 15 || n_len_aux < -15))
+			n_len_aux = n_len_aux / 16 ;
+	}
 	return (ft_allocandretstr_base(n, n_len, base));
 }
